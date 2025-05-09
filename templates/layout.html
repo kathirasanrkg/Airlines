@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask - SQLite</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+  <div class="container pt-3"> <!-- A Bootstrap container class for proper padding and responsive layout. 'pt-3' adds padding-top spacing. -->
+<!--Templating With Jinja2-->
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    <!-- Begins a 'with' statement in Jinja2 to assign the result of get_flashed_messages (which returns flash messages) to the variable 'messages'.
+         The 'with_categories=true' argument returns a list of (category, message) pairs rather than just messages, allowing different styles for different categories. -->
+<!--success(category), your success message(message)-->
+      {% if messages %} 
+      <!-- Checks if there are any flash messages present inside 'messages'. 
+           If messages exist (list is not empty), the following block runs. -->
+
+        {% for category, message in messages %} 
+        <!-- Loops through each message in 'messages'. 
+             Each message has two parts: 'category' (e.g., success, warning, error) and the actual 'message' text. -->
+
+          <div class="alert alert-{{ category }}" role="alert">
+          <!-- Creates a Bootstrap alert div. 
+               The alert's class dynamically includes the category (e.g., alert-success, alert-danger) to style the alert appropriately.
+               The 'role="alert"' attribute helps screen readers announce the message immediately. -->
+
+            {{ message }} <!-- Displays the actual message content that was flashed, making it visible to the user. -->
+            
+          </div>
+
+        {% endfor %}  <!-- Ends the for loop that iterates over messages. -->
+
+      {% endif %} <!-- Ends the if condition that checks if messages exist. -->
+      
+    {% endwith %} <!-- Ends the with statement, wrapping up the temporary 'messages' assignment. -->
+    
+    {% block body %} 
+    <!-- Placeholder for a content block named 'body'. 
+         This block will be overridden in templates that extend this base template to insert specific content. -->
+
+    {% endblock %} <!-- Ends the 'body' block. -->
+    
+  </div>
+</body>
+</html>

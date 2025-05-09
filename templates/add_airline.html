@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h3>Add airline</h3>
+      <hr>
+      <form method="post" action="{{ url_for('add_airline') }}">
+        <div class="mb-3"> <!-- Bootstrap 5 Margin Bottom mb -->
+          <label for="flightnumber" class="form-label">Flightnumber</label>
+          <input type="number" id="flightnumber" name="flightnumber" required class="form-control">
+          <!-- Label for the input field, associated via the 'for' attribute -->
+          <!-- ID to identify the field and link it with the label -->
+          <!-- Name attribute, used when the form is submitted -->
+          <!-- required - Makes this field mandatory before form submission -->
+          <!-- form-control - Bootstrap class to style the input -->
+        </div>
+          <div class="mb-3">
+          <label for="airline" class="form-label">Airline</label>
+          <input type="text" id="airline" name="airline" required class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="departurecity" class="form-label">Departure City</label>
+          <input type="text" id="departurecity" name="departurecity" required class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="arrivalcity" class="form-label">Arrival City</label>
+          <input type="text" id="arrivalcity" name="arrivalcity" required class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="departuretime" class="form-label">Departure Time</label>
+          <input type="time" id="departuretime" name="departuretime" required class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="arrivaltime" class="form-label">Arrival Time</label>
+          <input type="time" id="arrivaltime" name="arrivaltime" required class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="status" class="form-label">Status</label>
+          <input type="text" id="status" name="status" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

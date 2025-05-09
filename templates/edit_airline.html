@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h3>Edit airline</h3>
+      <hr>
+      <form method="post" action="{{ url_for('edit_airline', uid=datas.UID) }}">
+        <div class="mb-3">
+          <label for="flightnumber" class="form-label">Flightnumber</label>
+          <input type="number" id="Flightnumber" name="flightnumber" required class="form-control" value="{{ datas.FLIGHTNUMBER}}">
+        </div>
+        <div class="mb-3">
+          <label for="airline" class="form-label">Airline</label>
+          <input type="text" id="airline" name="airline" required class="form-control" value="{{ datas.AIRLINE }}">
+        </div>
+        <div class="mb-3">
+          <label for="departurecity" class="form-label">Departure City</label>
+          <input type="text" id="departurecity" name="departurecity" required class="form-control" value="{{ datas.DEPARTURECITY }}">
+        </div>
+        <div class="mb-3">
+          <label for="arrivalcity" class="form-label">Arrival City</label>
+          <input type="text" id="arrivalcity" name="arrivalcity" required class="form-control" value="{{ datas.ARRIVALCITY}}">
+        </div>
+        <div class="mb-3">
+          <label for="departuretime" class="form-label">Departure Time</label>
+          <input type="time" id="departuretime" name="departuretime" required class="form-control" value="{{ datas.DEPARTURETIME }}">
+        </div>
+        <div class="mb-3">
+          <label for="arrivaltime" class="form-label">Arrival Time</label>
+          <input type="time" id="arrivaltime" name="arrivaltime" required class="form-control" value="{{ datas.ARRIVALTIME }}">
+        </div>
+        <div class="mb-3">
+          <label for="status" class="form-label">Status</label>
+          <input type="text" id="status" name="status" required class="form-control" value="{{ datas.STATUS }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

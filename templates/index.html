@@ -1,0 +1,50 @@
+{% extends 'layout.html' %} <!--It extends another template html page -->
+{% block body %}
+<head>
+  <link rel="stylesheet" href="/static/style.css" /> 
+</head>
+
+<h3 class="text-center mb-3">Flask - SQLite CRUD Application</h3>
+
+<p class="text-end">
+  <a href="{{ url_for('add_airline') }}" class="btn btn-success">➕ Add User</a>
+</p>
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>S.no</th>
+      <th>Flight number</th>
+      <th>Airlines</th>
+      <th>Departure City</th>
+      <th>Arrival City</th>
+      <th>Departure Time</th>
+      <th>Arrival Time</th>
+      <th>Status</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in datas %}  <!--Iterating Data in every row-->
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row.FLIGHTNUMBER }}</td>  <!--Specific Column Rows Data-->
+        <td>{{ row.AIRLINE }}</td>
+        <td>{{ row.DEPARTURECITY }}</td>
+        <td>{{ row.ARRIVALCITY }}</td>
+        <td>{{ row.DEPARTURETIME }}</td>
+        <td>{{ row.ARRIVALTIME }}</td>
+        <td>{{ row.STATUS }}</td>
+        <td>
+          <a href="{{ url_for('edit_airline', uid=row.UID) }}" class="btn btn-primary btn-sm">Edit</a>
+        </td>
+        <td>
+          <a href="{{ url_for('delete_airline', uid=row.UID) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
